@@ -2,9 +2,9 @@
 
 Example scripts to make use of the HX REST API and Intersight API for HX-specific tasks.
 
-##Contents:
+## Contents:
 
-#Authentication for Intersight API with Postman:
+# Authentication for Intersight API with Postman:
 Environment/variables to set:
 - key-id: key ID received when generation API key from intersight (Settings - API Keys - Generate)
 - shared-secret: RSA private key from same API key generation (including -----BEGIN RSA PRIVATE KEY-----)
@@ -19,7 +19,7 @@ For each request, add the following headers:
 - Digest: {{computed-digest}}
 - Date: {{current-date}}
 
-#Python scripts for HX REST API:
+# Python scripts for HX REST API:
 Sample scripts for authentication and basic actions on HX REST API.
 py_api_auth.py can be combine with the rest of the scripts to re-authenticate instead of using an access_token (Bearer).
 
@@ -28,7 +28,7 @@ py_api_auth.py can be combine with the rest of the scripts to re-authenticate in
 - py_api_getds.py: Get a list of current datastores on the HX cluster
 - py_api_getvms.py: Get a list of all VMs on the HX cluster
 
-#Powershell scripts for HX REST API:
+# Powershell scripts for HX REST API:
 Sample scripts for authentication and basic actions on HX REST API.
 ps_api_auth.ps1 can be combine with the rest of the scripts to re-authenticate instead of using an access_token (Bearer).
 
