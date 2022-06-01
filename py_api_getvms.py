@@ -3,11 +3,14 @@ import json
 import requests
 
 # replace these values to match your environment:
-cluster_ip="172.16.8.10"
-access_token = "eyJ...qyg"
+cluster_ip = "<cluster_ip>" # REPLACE THIS
+if 'HX_ACCESS_TOKEN' in os.environ:
+    access_token = os.environ['HX_ACCESS_TOKEN']
+else:
+    access_token = input("Please provide the access_token for HX:")
 
 headers = {
-    'accept': 'application/json',
+    'Accept': 'application/json',
     'Authorization': 'Bearer '+access_token,
 }
 
