@@ -1,0 +1,78 @@
+---
+
+- name: Get cluster health through HX REST API
+  hosts: localhost
+  vars:
+    - cluster_ip: "172.16.13.10"
+    - cluster_username: "admin"
+    - cluster_password: "SVCisc0123!"
+    - access_token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2Vycy9hZG1pbiIsImV4cCI6MTY1MjcwMzkwOSwidXNlciI6ImFkbWluIiwidG9rZW4iOiIxMCIsInNjb3BlIjoiUkVBRCxNT0RJRlkiLCJpc3N1ZWRBdCI6MTY1MTE0ODcwOTk3OSwidG9rZW5MaWZlVGltZSI6MTU1NTIwMDAwMCwiaWRsZVRpbWVvdXQiOjE4MDAwMDAsIndhcm5JZGxlVGltZW91dCI6MTAwMDAsImh5cGVydmlzb3IiOiJFc3gifQ.fByEJ4Yb5VdOGn19f5VtpGCtmvldvXgDlHRGtDdC3zs"
+  gather_facts: false
+
+  tasks:
+    - name: Get access_token from HX REST API
+      uri: 
+        url: "https://{{ cluster_ip }}/aaa/v1/auth?grant_type=password"
+        method: POST
+        validate_certs: no
+        body_format: json
+        status_code: 201
+        body:
+          username: "{{ cluster_username }}"
+          password: "{{ cluster_password }}"
+      register: access_token_r
+
+    - debug:
+        var: access_token_r.json.access_token
+
+    - set_fact:
+        access_token: "{{ access_token_r.json.access_token }}"
+   
+    - name: Get Cluster UUID
+      uri:
+        url: "https://{{ cluster_ip }}/coreapi/v1/clusters"
+        method: GET
+        validate_certs: no
+        headers:
+          Authorization: "Bearer {{ access_token }}"
+      register: cluster_r
+
+    - debug:
+        var: cluster_r.json.0.uuid
+
+    - set_fact:
+        cluster_uuid: "{{ cluster_r.json.0.uuid }}"
+
+    - name: Get Cluster Health
+      uri:
+        url: "https://{{ cluster_ip }}/coreapi/v1/clusters/{{ cluster_uuid }}/health"
+        method: GET
+        validate_certs: no
+        headers:
+          Authorization: "Bearer {{ access_token }}"
+      register: cluster_health_r
+
+    - set_fact:
+        cluster_health: "{{ cluster_health_r.json.resiliencyDetails.resiliencyState }}"
+
+    - name: Get Cluster Info
+      uri:
+        url: "https://{{ cluster_ip }}/coreapi/v1/clusters/{{ cluster_uuid }}/about"
+        method: GET
+        validate_certs: no
+        headers:
+          Authorization: "Bearer {{ access_token }}"
+      register: cluster_about_r
+
+    - set_fact:
+        cluster_hypervisor: "{{ cluster_about_r.json.hypervisor }}"
+    - set_fact:
+        cluster_version: "{{ cluster_about_r.json.displayVersion }}"
+
+    - name: Show collected facts
+      debug: 
+        msg:
+          - "Cluster UUD: {{ cluster_uuid }}"
+          - "Cluster Version: {{ cluster_version }}"
+          - "Cluster Hypervisor: {{ cluster_hypervisor }}"
+          - "Cluster Health: {{ cluster_health }}"
