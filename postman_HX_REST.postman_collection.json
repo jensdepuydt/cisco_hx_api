@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "beaebee2-6395-4bf2-8a21-185174d41a10",
+		"name": "HyperFlex - REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "no_env AAA Auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "https://1.2.3.4/aaa/v1/auth?grant_type=password",
+					"protocol": "https",
+					"host": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"path": [
+						"aaa",
+						"v1",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no_env Clusters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ey...",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://1.2.3.4/coreapi/v1/clusters",
+					"protocol": "https",
+					"host": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no_env Hypervisor - list hosts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2Vycy9hZG1pbiIsImV4cCI6MTY1NTY1MDM5OCwidXNlciI6ImFkbWluIiwidG9rZW4iOiI1Iiwic2NvcGUiOiJSRUFELE1PRElGWSIsImlzc3VlZEF0IjoxNjU0MDk1MTk4OTg4LCJ0b2tlbkxpZmVUaW1lIjoxNTU1MjAwMDAwLCJpZGxlVGltZW91dCI6MTgwMDAwMCwid2FybklkbGVUaW1lb3V0IjoxMDAwMCwiaHlwZXJ2aXNvciI6IkVzeCJ9.AdTAfe2UGClYnzvIXVcY4YKSgFACIM4UMhq453JHr5Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://1.2.3.4/coreapi/v1/hypervisor/hosts",
+					"protocol": "https",
+					"host": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"hypervisor",
+						"hosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no_env VMs - list for host",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2Vycy9hZG1pbiIsImV4cCI6MTY1NTY1MDM5OCwidXNlciI6ImFkbWluIiwidG9rZW4iOiI1Iiwic2NvcGUiOiJSRUFELE1PRElGWSIsImlzc3VlZEF0IjoxNjU0MDk1MTk4OTg4LCJ0b2tlbkxpZmVUaW1lIjoxNTU1MjAwMDAwLCJpZGxlVGltZW91dCI6MTgwMDAwMCwid2FybklkbGVUaW1lb3V0IjoxMDAwMCwiaHlwZXJ2aXNvciI6IkVzeCJ9.AdTAfe2UGClYnzvIXVcY4YKSgFACIM4UMhq453JHr5Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://1.2.3.4/coreapi/v1/hypervisor/hosts/0bb1f014-a4b7-334d-a0b5-3f74030ab26b/vms",
+					"protocol": "https",
+					"host": [
+						"1",
+						"2",
+						"3",
+						"4"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"hypervisor",
+						"hosts",
+						"0bb1f014-a4b7-334d-a0b5-3f74030ab26b",
+						"vms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AAA Auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"access_token\", jsonData[\"access_token\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"{{cluster_user}}\",\n  \"password\": \"{{cluster_password}}\"\n}"
+				},
+				"url": {
+					"raw": "https://{{cluster_ip}}/aaa/v1/auth?grant_type=password",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"aaa",
+						"v1",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clusters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"cluster_uuid\", jsonData[0][\"uuid\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cluster - health",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/health",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cluster - about",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/about",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"about"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VMs - list all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/rest/virtplatform/vms",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"rest",
+						"virtplatform",
+						"vms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DS - list all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/datastores",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"datastores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DS - create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"clus_ds\",\n  \"sizeInBytes\": 1073741824,\n  \"dataBlockSizeInBytes\": 8192,\n  \"usageType\": \"NFS\"\n}"
+				},
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/datastores",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"datastores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DS - delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/datastores/0000000000f4b1a9:000000000071a860",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"datastores",
+						"0000000000f4b1a9:000000000071a860"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Services - NTP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{cluster_ip}}/coreapi/v1/clusters/{{cluster_uuid}}/services/ntp",
+					"protocol": "https",
+					"host": [
+						"{{cluster_ip}}"
+					],
+					"path": [
+						"coreapi",
+						"v1",
+						"clusters",
+						"{{cluster_uuid}}",
+						"services",
+						"ntp"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}
